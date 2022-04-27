@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sing-up Page</title>
+    <style>
+        #container{
+            display: flex;
+            justify-content: center;
+            margin: auto;
+
+        }
+        #Register{
+            margin-top: 20px;
+            margin-left: 50px;
+            background-color: teal;
+
+        }
+        h1{
+            text-align: center;
+        }
+        #link{
+            text-decoration: underline;
+            color: green;
+
+        }
+        #link:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign-up</h1>
+    <div id="container">
+        <form>
+            <h2>Create Account</h2>
+            <p>Your Name</p>
+            <input type="text" placeholder="Enter Name" id="name">
+            <p>Mobile Number</p>
+            <input type="number" placeholder="Enter Number" id="number">
+            <p>Email Id</p>
+            <input type="email" placeholder="Enter email" id="email">
+            <p>password</p>
+            <input type="password" placeholder="Enter password" id="password">
+            <br><br><br>
+            <input type="submit" value="Registor" id="Registor">
+            <br><br>
+            <p>Already Registor<a id="link">Login</a></p>
+        </form>
+    </div>
+    
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit",signupFn);
+    document.querySelector("#link").addEventListener("click",loginFn);
+
+    function loginFn(){
+        window.location.href = "signup.html"
+    }
+    var alluserdata;
+    if(localStorage.getItem("alluserdata")==null){
+        alluserdata = [];
+    }else{
+        alluserdata = JSON.parse(localStorage.getItem("alluserdata"));
+    }
+
+    function signupFn(){
+        event.preventDefault();
+        var userdata = {
+            Name: document.getElementById("name").value,
+            Email: document.getElementById("email").value,
+            Mobile: document.getElementById("number").value,
+            Password: document.getElementById("password").value,
+        };
+        alluserdata.push(userdata);
+        localStorage.setItem("userdata",JSON.stringify(userdata));
+        alert("Sing-up -> Successfuly");
+        
+    }
+    
+</script>
+</html>

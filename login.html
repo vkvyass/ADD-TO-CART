@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Data</title>
+    <style>
+        
+        #container{
+            display: flex;
+            justify-content: center;
+            margin: auto;
+
+        }
+        #Register{
+            margin-top: 20px;
+            margin-left: 50px;
+            background-color: teal;
+
+        }
+        h1{
+            text-align: center;
+        }
+        #link{
+            text-decoration: underline;
+            color: green;
+
+        }
+        #link:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>login</h1>
+    <div id="container">
+        <form>
+            <h2>Create Account</h2>
+            <p>Email id:</p>
+            <input type="email" placeholder="Enter Email" id="email">
+            <p>Password:</p>
+            <input type="password" placeholder="Enter Password" id="password">
+            <br><br>
+            <input type="Submit" id="login" value="login">
+            <br><br>
+            <p>Create New Account<a id="link">Sing-up</a></p>
+        </form>
+    </div>
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit",signupFn);
+    document.querySelector("#link").addEventListener("click",loginFn);
+
+    function signupFn(){
+        window.location.href = "signup.html"
+    };
+    var Registoruser = JSON.parse(localStorage.getItem("userdata"));
+
+    function loginFn(){
+        event.preventDefault();
+
+        var Email = document.querySelector("#email").vale;
+        var password= document.querySelector("#password").vale;
+
+        Registoruser.forEach(userdata => {
+            if(userdata.Email==enterEmail && userdata.password==enterPassword){
+                alert("login successfuly");
+                window.location.href = "mens.html"
+            }else{
+                alert("incorrect details");
+            }
+        });
+    }
+</script>
+</html>
